@@ -4,94 +4,728 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Personal Portfolio | AI, Technology & Creativity</title>
+  <meta name="description" content="Andreas — technology, independent software projects, music production and learning systems.">
+  <meta name="theme-color" content="#171717">
+  <title>Andreas — Technology, Music & Ideas</title>
+
   <style>
+    :root {
+      --ink: #171717;
+      --paper: #f4f0e8;
+      --lime: #dfff52;
+      --red: #f35c3f;
+      --line: 2px solid var(--ink);
+      --max: 1320px;
+    }
+
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
-      background: #10141d;
-      color: #f5f5f5;
-      font-family: Arial, sans-serif;
-      line-height: 1.7;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
     }
-    main {
-      max-width: 950px;
-      margin: auto;
-      padding: 90px 24px;
+
+    a { color: inherit; }
+    a:focus-visible {
+      outline: 3px solid var(--red);
+      outline-offset: 4px;
     }
-    .eyebrow { color: #9da9ff; }
-    h1 {
-      font-size: clamp(42px, 7vw, 76px);
-      line-height: 1.1;
-      margin: 14px 0 24px;
+
+    ::selection {
+      background: var(--lime);
+      color: var(--ink);
     }
-    h2 { margin-top: 75px; }
-    .intro {
-      color: #b9c0ce;
-      font-size: 19px;
-      max-width: 650px;
+
+    .shell {
+      width: min(calc(100% - 44px), var(--max));
+      margin-inline: auto;
     }
-    .projects {
+
+    .display {
+      font-family: Impact, "Arial Narrow", "Arial Black", sans-serif;
+      font-stretch: condensed;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -.035em;
+      line-height: .91;
+    }
+
+    .eyebrow {
+      font-size: .78rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .muted { opacity: .72; }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 26px;
+      min-height: 50px;
+      padding: 13px 17px;
+      border: 2px solid currentColor;
+      text-decoration: none;
+      font-size: .84rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .045em;
+      transition: background-color .15s, color .15s, transform .15s;
+    }
+
+    .button:hover {
+      background: var(--ink);
+      color: var(--paper);
+      transform: translate(-2px, -2px);
+    }
+
+    .button--light:hover {
+      background: var(--lime);
+      color: var(--ink);
+    }
+
+    .arrow {
+      font-size: 1.3rem;
+      line-height: 1;
+    }
+
+    /* HEADER */
+
+    .site-header {
+      background: var(--ink);
+      color: var(--paper);
+      border-bottom: 4px solid var(--red);
+    }
+
+    .header-inner {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .wordmark {
+      font-family: Impact, "Arial Black", sans-serif;
+      font-size: 1.55rem;
+      letter-spacing: .025em;
+      text-decoration: none;
+    }
+
+    .wordmark span { color: var(--lime); }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: clamp(12px, 2.3vw, 32px);
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      font-size: .77rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      text-decoration: none;
+    }
+
+    .nav a:hover { color: var(--lime); }
+
+    /* HERO */
+
+    .hero {
+      border-bottom: var(--line);
+      overflow: hidden;
+    }
+
+    .hero-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding-top: 35px;
+    }
+
+    .hero-top p { margin: 0; }
+
+    .hero-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      grid-template-columns: minmax(0, 1.75fr) minmax(245px, .65fr);
+      gap: 32px;
+      align-items: end;
+      padding: 65px 0 55px;
+    }
+
+    .hero h1 {
+      font-size: clamp(5rem, 12.2vw, 11.6rem);
+      margin: 0;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--red);
+    }
+
+    .hero h1 .outline {
+      color: transparent;
+      -webkit-text-stroke: 2px var(--ink);
+    }
+
+    .hero-aside {
+      border-left: 4px solid var(--ink);
+      padding-left: 23px;
+      margin-bottom: 8px;
+    }
+
+    .hero-aside p {
+      font-size: clamp(1.05rem, 1.65vw, 1.4rem);
+      line-height: 1.5;
+      margin: 0 0 28px;
+    }
+
+    .sticker {
+      display: inline-block;
+      background: var(--lime);
+      color: var(--ink);
+      border: var(--line);
+      padding: 7px 13px;
+      transform: rotate(-3deg);
+      font-size: .82rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      box-shadow: 4px 4px 0 var(--ink);
+    }
+
+    /* RUNNING STRIP */
+
+    .strip {
+      background: var(--lime);
+      border-bottom: var(--line);
+      overflow: hidden;
+    }
+
+    .strip-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px 25px;
+      padding: 14px 0;
+    }
+
+    .strip span {
+      font-size: .85rem;
+      font-weight: 900;
+      letter-spacing: .025em;
+      text-transform: uppercase;
+    }
+
+    .strip b {
+      color: var(--red);
+      padding-left: 15px;
+    }
+
+    /* SECTIONS */
+
+    section { scroll-margin-top: 30px; }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin: 0 0 30px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(3.3rem, 7.3vw, 7.7rem);
+      margin: 0;
+    }
+
+    .section-head p {
+      max-width: 230px;
+      margin: 0 0 6px;
+      font-size: .8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .work { padding: 90px 0 100px; }
+    .work-list { border-top: var(--line); }
+
+    .project {
+      display: grid;
+      grid-template-columns: 75px minmax(0, 1.3fr) minmax(205px, .72fr);
       gap: 18px;
+      align-items: start;
+      padding: 31px 0 35px;
+      border-bottom: var(--line);
     }
-    .card {
-      padding: 26px;
-      border: 1px solid #343b4d;
-      border-radius: 14px;
-      background: #1b2130;
+
+    .project-number {
+      font-family: Impact, "Arial Black", sans-serif;
+      font-size: 2.3rem;
+      line-height: 1;
     }
-    .card p { color: #b9c0ce; }
-    a { color: #a7b4ff; }
-    footer {
-      margin-top: 85px;
-      color: #999;
-      font-size: 14px;
+
+    .project h3 {
+      font-size: clamp(2.3rem, 4.4vw, 4.8rem);
+      margin: 0 0 8px;
+    }
+
+    .project-tag {
+      display: inline-block;
+      background: var(--ink);
+      color: var(--paper);
+      padding: 3px 9px;
+      font-size: .7rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .075em;
+    }
+
+    .project:nth-child(2) .project-tag {
+      background: var(--red);
+      color: var(--ink);
+    }
+
+    .project:nth-child(3) .project-tag {
+      background: var(--lime);
+      color: var(--ink);
+      border: 1px solid var(--ink);
+    }
+
+    .project p {
+      max-width: 370px;
+      margin: 6px 0 0;
+      font-size: 1rem;
+    }
+
+    /* ABOUT */
+
+    .about {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 85px 0;
+      border-block: 4px solid var(--ink);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(35px, 7vw, 100px);
+    }
+
+    .about h2 {
+      font-size: clamp(3.2rem, 6vw, 6.5rem);
+      margin: 10px 0 23px;
+    }
+
+    .about h2 span { color: var(--lime); }
+
+    .about .lead {
+      font-size: clamp(1.2rem, 2vw, 1.65rem);
+      line-height: 1.48;
+      max-width: 610px;
+    }
+
+    .facts {
+      list-style: none;
+      margin: 9px 0 0;
+      padding: 0;
+      border-top: 1px solid #777;
+    }
+
+    .facts li {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 14px;
+      padding: 19px 0;
+      border-bottom: 1px solid #777;
+    }
+
+    .facts strong {
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      color: var(--lime);
+    }
+
+    .facts span { font-size: .98rem; }
+
+    /* CONTACT */
+
+    .contact { padding: 90px 0 110px; }
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 25px;
+      align-items: end;
+      border-top: var(--line);
+      padding-top: 30px;
+    }
+
+    .contact h2 {
+      font-size: clamp(4.2rem, 10vw, 10rem);
+      margin: 0 0 15px;
+    }
+
+    .contact p {
+      max-width: 610px;
+      font-size: 1.16rem;
+      margin: 0;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-width: 210px;
+    }
+
+    .footer {
+      background: var(--lime);
+      border-top: var(--line);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px 20px;
+      padding: 18px 0;
+      font-size: .77rem;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
+
+    /* TABLET */
+
+    @media (max-width: 850px) {
+      .hero-grid, .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-grid {
+        gap: 35px;
+        padding: 60px 0 55px;
+      }
+
+      .hero-aside { max-width: 590px; }
+
+      .project {
+        grid-template-columns: 55px 1fr;
+      }
+
+      .project p { grid-column: 2; }
+      .contact-wrap { grid-template-columns: 1fr; }
+
+      .contact-links {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 560px) {
+      .shell {
+        width: min(calc(100% - 30px), var(--max));
+      }
+
+      .header-inner {
+        align-items: flex-start;
+        padding: 16px 0;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .nav { gap: 17px; }
+      .nav a { font-size: .72rem; }
+
+      .hero-top {
+        flex-direction: column;
+        gap: 8px;
+        padding-top: 24px;
+      }
+
+      .hero-grid { padding-top: 43px; }
+
+      .hero h1 {
+        font-size: clamp(4rem, 17vw, 6rem);
+      }
+
+      .hero h1 .outline {
+        -webkit-text-stroke: 1.5px var(--ink);
+      }
+
+      .section-head {
+        align-items: start;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .project {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .project p { grid-column: auto; }
+
+      .facts li {
+        grid-template-columns: 1fr;
+        gap: 5px;
+      }
+
+      .work, .about, .contact {
+        padding-block: 65px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .button { transition: none; }
     }
   </style>
 </head>
+
 <body>
-  <main>
-    <p class="eyebrow">TECHNOLOGY · CREATIVITY · LEARNING</p>
-    <h1>Building ideas.<br>Exploring possibilities.</h1>
 
-    <p class="intro">
-      I'm exploring the intersection of artificial
-      intelligence, technology, philosophy and music.
-      Currently studying AI Engineering at Ironhack
-      and developing independent projects.
-    </p>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="wordmark" href="#top" aria-label="Andreas, back to top">ANDREAS<span>✳</span></a>
 
-    <h2 id="projects">Selected Projects</h2>
-    <section class="projects">
-      <div class="card">
-        <h3>Software & AI</h3>
-        <p>Independent application development,
-        AI experiments and technical projects.</p>
-      </div>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#work">Selected work</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-      <div class="card">
-        <h3>Music Production</h3>
-        <p>Conceived and independently produced
-        an original indie-rock EP.</p>
-      </div>
+  <main id="top">
 
-      <div class="card">
-        <h3>Learning & Philosophy</h3>
-        <p>Exploring logic, memory techniques,
-        the method of loci and storytelling.</p>
+    <!-- HERO -->
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="shell">
+        <div class="hero-top eyebrow">
+          <p>Independent projects / technology / sound</p>
+          <p>Based in Europe · Portfolio 2026</p>
+        </div>
+
+        <div class="hero-grid">
+          <h1 class="display" id="hero-title">
+            MAKE<br>
+            <span class="outline">THINGS</span><br>
+            <em>HAPPEN.</em>
+          </h1>
+
+          <div class="hero-aside">
+            <p>
+              I'm Andreas. I work across technology,
+              creative projects and learning systems —
+              with a background in technical support
+              and a growing focus on AI.
+            </p>
+
+            <span class="sticker">
+              Curiosity into practice ↗
+            </span>
+          </div>
+        </div>
       </div>
     </section>
 
-    <h2>Connect</h2>
-    <p>
-      <a href="https://github.com/chepeda">
-        Explore my GitHub
-      </a>
-    </p>
+    <!-- DISCIPLINES -->
 
-    <footer>Personal portfolio · 2026</footer>
+    <div class="strip" aria-label="Areas of interest">
+      <div class="shell strip-inner">
+        <span>01 / Technology <b>✳</b></span>
+        <span>02 / Music <b>✳</b></span>
+        <span>03 / Philosophy <b>✳</b></span>
+        <span>04 / Learning <b>✳</b></span>
+      </div>
+    </div>
+
+    <!-- PROJECTS -->
+
+    <section class="work shell" id="work" aria-labelledby="work-title">
+      <div class="section-head">
+        <h2 class="display" id="work-title">
+          SELECTED<br>WORK.
+        </h2>
+
+        <p>
+          Different disciplines.<br>
+          Same approach: build, test, learn.
+        </p>
+      </div>
+
+      <div class="work-list">
+
+        <article class="project">
+          <div class="project-number" aria-hidden="true">01</div>
+          <div>
+            <h3 class="display">
+              INDEPENDENT<br>APP.
+            </h3>
+            <span class="project-tag">
+              In development / Software
+            </span>
+          </div>
+          <p>
+            Developing a personal app using AI-assisted
+            development tools. Turning an idea into
+            a working product through prototyping,
+            testing and iteration. Project details
+            will follow.
+          </p>
+        </article>
+
+        <article class="project">
+          <div class="project-number" aria-hidden="true">02</div>
+          <div>
+            <h3 class="display">
+              INDIE ROCK<br>EP.
+            </h3>
+            <span class="project-tag">
+              Completed / Independent music
+            </span>
+          </div>
+          <p>
+            Created an original indie-rock EP entirely
+            on my own, from initial concept to the
+            finished EP. A hands-on exercise in creative
+            direction, persistence and completing a project.
+          </p>
+        </article>
+
+        <article class="project">
+          <div class="project-number" aria-hidden="true">03</div>
+          <div>
+            <h3 class="display">
+              MEMORY<br>SYSTEMS.
+            </h3>
+            <span class="project-tag">
+              Ongoing practice / Learning
+            </span>
+          </div>
+          <p>
+            Exploring the method of loci and story-based
+            memory techniques: transforming information
+            into symbols, placing it along imagined routes
+            and recalling it through structured associations.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+
+    <section class="about" id="about" aria-labelledby="about-title">
+      <div class="shell about-grid">
+        <div>
+          <p class="eyebrow">
+            A little background / no buzzword bingo
+          </p>
+
+          <h2 class="display" id="about-title">
+            BUILT ON<br>
+            <span>CURIOSITY.</span>
+          </h2>
+
+          <p class="lead">
+            I bring experience from customer-facing
+            technical support, a long-standing interest
+            in philosophy and logic, and a practical
+            drive to make things myself.
+          </p>
+
+          <p class="muted">
+            I'm now building on that experience through
+            AI Engineering training at Ironhack and
+            independent software projects.
+          </p>
+        </div>
+
+        <div>
+          <ul class="facts">
+            <li>
+              <strong>Experience</strong>
+              <span>Technical support, including B2B and consumer technology</span>
+            </li>
+            <li>
+              <strong>Currently</strong>
+              <span>AI Engineering training at Ironhack (in progress)</span>
+            </li>
+            <li>
+              <strong>Academic</strong>
+              <span>Philosophy studies with a focus on logic (final examinations pending)</span>
+            </li>
+            <li>
+              <strong>Languages</strong>
+              <span>Four languages spoken; proficiency levels available on request</span>
+            </li>
+            <li>
+              <strong>Interests</strong>
+              <span>AI applications, product thinking, creative production and learning methods</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+
+    <section class="contact shell" id="contact" aria-labelledby="contact-title">
+      <p class="eyebrow">Next steps / connections</p>
+
+      <div class="contact-wrap">
+        <div>
+          <h2 class="display" id="contact-title">
+            LET'S<br>TALK.
+          </h2>
+
+          <p>
+            Interested in AI implementation, technical
+            solutions and roles where creative thinking
+            meets practical technology.
+          </p>
+        </div>
+
+        <div class="contact-links">
+          <a
+            class="button"
+            href="https://github.com/chepeda"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+
+          <!-- Add a professional email link here later. -->
+        </div>
+      </div>
+    </section>
+
   </main>
+
+  <!-- FOOTER -->
+
+  <footer class="footer">
+    <div class="shell footer-inner">
+      <span>© 2026 Andreas / Personal portfolio</span>
+      <span>Built with HTML & CSS · Hosted on GitHub Pages</span>
+    </div>
+  </footer>
+
 </body>
 </html>
