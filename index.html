@@ -3,13 +3,33 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0b0b0b">
-  <meta name="description" content="Andreas — applied machine learning, independent app development, learning systems and independent music production.">
-  <meta property="og:title" content="Andreas — Applied ML, Apps & Creative Work">
+  <meta name="theme-color" content="#11152D">
+  <meta name="description" content="Andreas Holzner Cepeda - applied machine learning, independent app development, learning systems and independent music production.">
+  <meta property="og:title" content="Andreas Holzner Cepeda - Applied ML, Apps & Creative Work">
   <meta property="og:description" content="Selected work in applied machine learning, an independent learning app and music production.">
-  <title>Andreas — ML, Independent Apps & Creative Work</title>
+  <title>Andreas Holzner Cepeda - ML, Independent Apps & Creative Work</title>
   <style>
-    :root { --bg:#0b0b0b; --panel:#181818; --ink:#f5f5f2; --muted:#a3a3a0; --subtle:#7c7c78; --line:#303030; --accent:#E8AC4C; }
+    /* NightBlue, supplied palette. The site uses these variables consistently. */
+    :root {
+      --bg:#11152D;
+      --panel:#1A2340;
+      --card:#222E50;
+      --muted-surface:#2A3A62;
+      --ink:#F8F9FF;
+      --muted:#BFCAE6;
+      --subtle:#BFCAE6;
+      --line:#43557C;
+      --line-strong:#6D84BA;
+      --action:#3956AC;
+      --action-pressed:#526CC1;
+      --secondary-action:#304773;
+      --action-text:#FFFFFF;
+      --accent:#88AAFF;
+      --danger:#FF9B9B;
+      --scrollbar-track:#1D2545;
+      --scrollbar-thumb:#6077B5;
+      --scrollbar-thumb-hover:#7F94CC;
+    }
     *,*::before,*::after {box-sizing:border-box}
     html {scroll-behavior:smooth}
     body {margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;-webkit-font-smoothing:antialiased}
@@ -18,85 +38,94 @@
     .wrap {width:min(1100px,calc(100% - 72px));margin-inline:auto}
     .masthead {min-height:84px;display:flex;justify-content:space-between;align-items:center;gap:20px}
     .logo {text-decoration:none;font-weight:900;font-size:14px;letter-spacing:.16em;line-height:1}
-    .logo span {display:inline-block;width:5px;height:5px;border-radius:50%;background:#F3CF83;margin-left:4px}
+    .logo span {display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--accent);margin-left:4px}
     .nav {display:flex;gap:34px;flex-wrap:wrap}
     .nav a {text-decoration:none;text-transform:uppercase;letter-spacing:.11em;font-size:10px;font-weight:800;transition:opacity .2s}
-    .nav a:hover {opacity:.55}
-    .eyebrow {text-transform:uppercase;font-size:10px;letter-spacing:.18em;font-weight:750;color:#b0b0ac}
+    .nav a:hover {opacity:1;color:var(--accent)}
+    .eyebrow {text-transform:uppercase;font-size:10px;letter-spacing:.18em;font-weight:750;color:var(--muted)}
     .hero {display:grid;grid-template-columns:1.06fr .94fr;gap:70px;align-items:center;padding:61px 0 118px}
     .hero h1 {font-weight:900;font-size:clamp(3.5rem,6.8vw,6.8rem);letter-spacing:-.073em;line-height:.995;margin:10px 0 24px;max-width:620px}
-    .hero p {font-size:13px;line-height:1.75;color:#a9a9a5;max-width:445px;letter-spacing:.005em;margin:0 0 25px}
+    .hero p {font-size:13px;line-height:1.75;color:var(--muted);max-width:445px;letter-spacing:.005em;margin:0 0 25px}
     /* A distinct editorial signature, kept separate from the descriptive copy. */
-    .hero .portfolio-tagline {font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:clamp(18px,1.7vw,23px);line-height:1.35;letter-spacing:-.015em;color:#f3cf83;border-left:2px solid #F3CF83;padding-left:16px;margin:-8px 0 30px;max-width:445px}
+    .hero .portfolio-tagline {font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:clamp(18px,1.7vw,23px);line-height:1.35;letter-spacing:-.015em;color:var(--accent);border-left:2px solid var(--accent);padding-left:16px;margin:-8px 0 30px;max-width:445px}
     .hero-actions {display:flex;gap:25px;align-items:center;flex-wrap:wrap}
-    .text-link {display:inline-block;text-decoration:none;text-transform:uppercase;letter-spacing:.13em;font-size:10px;font-weight:800;padding-bottom:5px;border-bottom:1px solid #F3CF83}
-    .text-link.ghost {color:#aaa;border-color:#F3CF83}
-    .text-link:hover {color:#F3CF83;border-color:#F3CF83}
+    .text-link {display:inline-block;text-decoration:none;text-transform:uppercase;letter-spacing:.13em;font-size:10px;font-weight:800;padding-bottom:5px;border-bottom:1px solid var(--accent)}
+    .text-link.ghost {color:var(--muted);border-color:var(--accent)}
+    .text-link:hover {color:var(--ink);border-color:var(--ink)}
     /* Hero artwork: complexity becomes clarity. Embedded in this HTML file, no extra image upload needed. */
-    .hero-visual {position:relative;aspect-ratio:1.66;border-radius:10px;overflow:hidden;background:#252629;box-shadow:0 24px 75px #0009}
+    .hero-visual {position:relative;aspect-ratio:1.66;border-radius:10px;overflow:hidden;background:var(--panel);box-shadow:0 24px 75px rgba(7,10,25,.48)}
     .hero-visual img {display:block;width:100%;height:100%;object-fit:cover;object-position:center}
     .hero-visual svg {display:block;width:100%;height:100%}
     .section-top {display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:21px}
     .section-top h2 {margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;font-size:31px;line-height:1.1;font-weight:850;letter-spacing:-.055em}
-    .section-hint {color:#888882;font-size:9px;text-transform:uppercase;letter-spacing:.12em;font-weight:700;text-align:right}
+    .section-hint {color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.12em;font-weight:700;text-align:right}
     .work {padding-bottom:80px}
     .cards {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-    .card {border-radius:10px;overflow:hidden;background:#191919;border:1px solid #292929;min-width:0;transition:transform .22s,border-color .22s}
-    .card:hover {transform:translateY(-4px);border-color:#565656}
-    .card-art {width:100%;aspect-ratio:1.65;display:block;background:#272727}
+    .card {border-radius:10px;overflow:hidden;background:var(--card);border:1px solid var(--line);min-width:0;transition:transform .22s,border-color .22s}
+    .card:hover {transform:translateY(-4px);border-color:var(--accent)}
+    .card-art {width:100%;aspect-ratio:1.65;display:block;background:var(--muted-surface)}
     .card-info {padding:16px 17px 19px}
     .card-heading {display:flex;align-items:flex-start;justify-content:space-between;gap:7px}
     .card h3 {font-size:14px;line-height:1.3;letter-spacing:-.018em;margin:0;font-weight:850}
-    .card-heading span {color:#c6c6c2;font-size:13px}
-    .card p {font-size:11px;line-height:1.7;color:#aaa9a5;margin:8px 0 10px}
-    .status {text-transform:uppercase;font-size:9px;letter-spacing:.1em;color:#b3b3af}
+    .card-heading span {color:var(--muted);font-size:13px}
+    .card p {font-size:11px;line-height:1.7;color:var(--muted);margin:8px 0 10px}
+    .status {text-transform:uppercase;font-size:9px;letter-spacing:.1em;color:var(--muted)}
+    .project-link {display:inline-block;margin-top:14px;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:3px;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+    .project-link:hover,.project-link:focus-visible {color:var(--ink);border-color:var(--ink)}
     .case-study {padding:0 0 102px}
-    .case-box {border:1px solid #363636;border-radius:10px;padding:31px 34px 34px;background:linear-gradient(145deg,#1b1b1b,#131313)}
+    .case-box {border:1px solid var(--line);border-radius:10px;padding:31px 34px 34px;background:linear-gradient(145deg,var(--card),var(--panel))}
     .case-grid {display:grid;grid-template-columns:1.12fr .88fr;gap:48px;align-items:start}
-    .case-label {font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#f3cf83;font-weight:800}
+    .case-label {font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);font-weight:800}
     .case-box h3 {font-size:clamp(1.9rem,3.25vw,3rem);letter-spacing:-.058em;line-height:1.12;margin:9px 0 15px}
-    .case-box p {font-size:12px;line-height:1.85;color:#b9b9b5;margin:0 0 14px}
-    .case-box strong {color:#f0f0eb;font-weight:750}
-    .note {margin:20px 0 0;padding-top:16px;border-top:1px solid #353535;font-size:10px;color:#999;line-height:1.7}
-    .detail-list {margin:9px 0 0;padding:0;list-style:none;border-top:1px solid #393939}
-    .detail-list li {display:grid;grid-template-columns:100px 1fr;gap:15px;border-bottom:1px solid #393939;padding:14px 0;font-size:11px;line-height:1.65;color:#bcbcb7}
-    .detail-list strong {font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:#e6e6e0}
+    .case-box p {font-size:12px;line-height:1.85;color:var(--muted);margin:0 0 14px}
+    .case-box strong {color:var(--ink);font-weight:750}
+    .note {margin:20px 0 0;padding-top:16px;border-top:1px solid var(--line);font-size:10px;color:var(--muted);line-height:1.7}
+    .detail-list {margin:9px 0 0;padding:0;list-style:none;border-top:1px solid var(--line)}
+    .detail-list li {display:grid;grid-template-columns:100px 1fr;gap:15px;border-bottom:1px solid var(--line);padding:14px 0;font-size:11px;line-height:1.65;color:var(--muted)}
+    .detail-list strong {font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--ink)}
     .future {display:flex;justify-content:space-between;gap:20px;align-items:center;padding-top:20px}
-    .future p {margin:0;max-width:680px;font-size:11px;color:#888}
-    .future span {font-size:10px;color:#a1a19d;text-transform:uppercase;letter-spacing:.11em;white-space:nowrap}
+    .future p {margin:0;max-width:680px;font-size:11px;color:var(--muted)}
+    .future span {font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.11em;white-space:nowrap}
     .about {display:grid;grid-template-columns:.95fr 1.05fr;gap:42px;align-items:center;padding:0 0 111px}
-    .about-image {min-height:410px;height:100%;border-radius:10px;background:#282723;overflow:hidden;position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:28px}
-    .about-image::before {content:"";position:absolute;width:410px;height:410px;border:1px solid rgba(243,207,131,.32);border-radius:50%;left:32%;top:15%;box-shadow:0 0 0 42px rgba(243,207,131,.12),0 0 0 90px rgba(224,170,72,.12),0 0 0 140px rgba(167,111,28,.12)}
-    .about-image::after {content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(96,64,28,.34),rgba(39,28,16,.56))}
+    .about-image {min-height:410px;height:100%;border-radius:10px;background:var(--panel);overflow:hidden;position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:28px}
+    .about-image::before {content:"";position:absolute;width:410px;height:410px;border:1px solid rgba(136,170,255,.32);border-radius:50%;left:32%;top:15%;box-shadow:0 0 0 42px rgba(136,170,255,.12),0 0 0 90px rgba(109,132,186,.12),0 0 0 140px rgba(67,85,124,.16)}
+    .about-image::after {content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(42,58,98,.25),rgba(21,26,52,.65))}
     .visual-overline,.visual-headline,.about-image-label {position:relative;z-index:1}
-    .visual-overline {color:#deded7;font-size:10px;text-transform:uppercase;letter-spacing:.19em;font-weight:750}
+    .visual-overline {color:var(--ink);font-size:10px;text-transform:uppercase;letter-spacing:.19em;font-weight:750}
     .visual-headline {font-size:clamp(2.15rem,3.2vw,3.35rem);letter-spacing:-.05em;line-height:1.1;font-weight:850;max-width:520px;margin:40px 0}
-    .about-image-label {font-size:10px;letter-spacing:.11em;color:#F3CF83;text-transform:uppercase;font-weight:800}
+    .about-image-label {font-size:10px;letter-spacing:.11em;color:var(--accent);text-transform:uppercase;font-weight:800}
     .about h2,.contact h2 {font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;font-size:31px;line-height:1.1;font-weight:850;letter-spacing:-.045em;margin:0 0 15px}
-    .about p {font-size:12px;color:#aaa9a5;line-height:1.8;max-width:500px;margin:0 0 13px}
-    .about .about-emphasis {font-size:13px;color:#f0f0ed}
-    .pull-quote {font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:clamp(18px,1.7vw,23px);font-weight:400;letter-spacing:-.015em;line-height:1.35;color:#f3cf83;border-left:2px solid #F3CF83;padding:0 0 0 16px;margin:20px 0 25px;max-width:500px}
+    .about p {font-size:12px;color:var(--muted);line-height:1.8;max-width:500px;margin:0 0 13px}
+    .about .about-emphasis {font-size:13px;color:var(--ink)}
+    .pull-quote {font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:clamp(18px,1.7vw,23px);font-weight:400;letter-spacing:-.015em;line-height:1.35;color:var(--accent);border-left:2px solid var(--accent);padding:0 0 0 16px;margin:20px 0 25px;max-width:500px}
     .about .text-link {margin-top:10px}
     .contact {display:block;max-width:650px;padding-bottom:95px}
-    .contact p {font-size:12px;color:#a5a5a1;margin:0 0 22px}
+    .contact p {font-size:12px;color:var(--muted);margin:0 0 22px}
     .contact-rows {display:grid;gap:9px;max-width:490px}
-    .contact-row {display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:43px;padding:10px 13px;border:1px solid #333;background:#0e0e0e;border-radius:3px;font-size:11px;color:#ddd;text-decoration:none;transition:background .2s,border-color .2s}
-    a.contact-row:hover {background:#222;border-color:#666}
-    .contact-row strong {font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#aaa;font-weight:750}
+    .contact-row {display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:43px;padding:10px 13px;border:1px solid var(--line);background:var(--panel);border-radius:3px;font-size:11px;color:var(--ink);text-decoration:none;transition:background .2s,border-color .2s}
+    a.contact-row:hover {background:var(--secondary-action);border-color:var(--accent)}
+    .contact-row strong {font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:750}
     .contact-row span {font-size:12px;text-align:right}
-    .footer {border-top:1px solid #2a2a2a;color:#82827e}
+    .footer {border-top:1px solid var(--line);color:var(--muted)}
     .footer-inner {display:flex;justify-content:space-between;gap:20px;align-items:center;padding:24px 0;font-size:10px;letter-spacing:.08em;text-transform:uppercase}
-    .footer-links {display:flex;gap:22px}.footer a{text-decoration:none}.footer a:hover{color:#fff}
+    .footer-links {display:flex;gap:22px}.footer a{text-decoration:none}.footer a:hover{color:var(--ink)}
     @media(max-width:840px){.wrap{width:min(670px,calc(100% - 42px))}.hero{grid-template-columns:1fr;gap:34px;padding:55px 0 88px}.hero h1{font-size:clamp(3.7rem,10vw,6rem)}.hero-visual{max-width:610px}.about,.contact{gap:30px}.case-grid{gap:25px}.about-image{min-height:345px}}
     @media(max-width:650px){.masthead{min-height:69px}.nav{gap:16px}.nav a{font-size:9px}.hero{padding:48px 0 75px}.hero h1{font-size:clamp(3.4rem,12vw,5rem)}.section-top{align-items:start}.cards{grid-template-columns:1fr;gap:17px}.card-art{aspect-ratio:1.9}.card-info{padding:18px}.card p{font-size:12px}.case-grid{grid-template-columns:1fr;gap:14px}.case-box{padding:25px 22px}.detail-list li{grid-template-columns:95px 1fr}.future{align-items:flex-start;flex-direction:column;gap:8px}.about{grid-template-columns:1fr;padding-bottom:79px}.contact{padding-bottom:79px}.about-image{min-height:330px}.footer-inner{align-items:flex-start;flex-direction:column}.section-top h2,.about h2,.contact h2{font-size:28px}}
+    @media(max-width:650px){.masthead{flex-wrap:wrap;align-items:center;gap:14px;padding-top:20px;padding-bottom:14px}.logo{font-size:13px;letter-spacing:.115em}.nav{width:100%;justify-content:flex-start;gap:12px 20px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
+
+    html {scrollbar-color:var(--scrollbar-thumb) var(--scrollbar-track)}
+    ::-webkit-scrollbar {width:10px}
+    ::-webkit-scrollbar-track {background:var(--scrollbar-track)}
+    ::-webkit-scrollbar-thumb {background:var(--scrollbar-thumb);border-radius:10px}
+    ::-webkit-scrollbar-thumb:hover {background:var(--scrollbar-thumb-hover)}
   </style>
 </head>
 <body>
   <header class="wrap masthead">
-    <a class="logo" href="#top" aria-label="Andreas Cepeda, back to top">ANDREAS CEPEDA<span></span></a>
+    <a class="logo" href="#top" aria-label="Andreas Holzner Cepeda, back to top">ANDREAS HOLZNER CEPEDA<span></span></a>
     <nav class="nav" aria-label="Main navigation">
-      <a href="#work">Work</a><a href="#case-study">Case study</a><a href="#about">About</a><a href="#contact">Contact</a>
+      <a href="#work">Work</a><a href="#case-study">Case study</a><a href="#about">About</a><a href="#contact">Contact</a><a href="https://github.com/chepeda" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
     </nav>
   </header>
   <main id="top" class="wrap">
@@ -109,10 +138,10 @@
         <div class="hero-actions"><a class="text-link" href="#work">Explore the work ↗</a><a class="text-link ghost" href="#about">My approach ↗</a></div>
       </div>
       <div class="hero-visual">
-        <svg viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="One straight white line on the left meets a gold-orange point, expanding into tangled white lines on the right over a dark charcoal background" preserveAspectRatio="xMidYMid slice">
-          <rect width="1200" height="700" fill="#252629"/>
+        <svg viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="One straight light line on the left meets a blue point, expanding into tangled light lines on the right over a night blue background" preserveAspectRatio="xMidYMid slice">
+          <rect width="1200" height="700" fill="#1A2340"/>
           <g transform="translate(1200 0) scale(-1 1)">
-          <g fill="none" stroke="#f3f1eb" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.98">
+          <g fill="none" stroke="#F8F9FF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.98">
             <path d="M-80 40 C 80 50, 120 220, 190 320 C 250 400, 300 470, 360 520 C 410 560, 490 550, 560 440 C 600 380, 620 360, 655 350" />
             <path d="M-70 130 C 80 120, 140 250, 220 350 C 300 450, 360 500, 430 470 C 520 430, 560 370, 655 350" />
             <path d="M-40 250 C 60 180, 180 120, 260 180 C 330 235, 320 320, 395 350 C 470 380, 570 360, 655 350" />
@@ -123,8 +152,8 @@
             <path d="M10 300 C 120 260, 160 190, 250 170 C 340 150, 430 205, 450 285 C 470 365, 400 430, 305 430 C 210 430, 145 360, 160 285 C 180 195, 280 150, 365 170 C 500 200, 565 280, 655 350" />
             <path d="M150 540 C 240 530, 310 500, 350 445 C 385 395, 380 330, 335 300 C 290 270, 220 275, 185 315 C 145 360, 150 430, 205 475 C 250 510, 315 515, 375 485 C 500 425, 565 390, 655 350" />
           </g>
-          <circle cx="668" cy="350" r="20" fill="#F3CF83"/>
-          <line x1="688" y1="350" x2="1200" y2="350" stroke="#f3f1eb" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="668" cy="350" r="20" fill="#88AAFF"/>
+          <line x1="688" y1="350" x2="1200" y2="350" stroke="#F8F9FF" stroke-width="4" stroke-linecap="round"/>
           </g>
         </svg>
       </div>
@@ -135,53 +164,54 @@
       <div class="cards">
         <article class="card">
           <svg class="card-art" viewBox="0 0 600 360" role="img" aria-label="Illustrative regression visualization, not actual model output" xmlns="http://www.w3.org/2000/svg">
-            <rect width="600" height="360" fill="#F3CF83"/>
-            <g stroke="#2b2924" opacity=".22" stroke-width="1"><path d="M78 55V315 M150 55V315 M222 55V315 M294 55V315 M366 55V315 M438 55V315 M510 55V315 M60 87H540 M60 144H540 M60 201H540 M60 258H540 M60 315H540"/></g>
-            <path d="M70 292L519 72" fill="none" stroke="#22211e" stroke-width="5"/>
-            <g fill="#24231f"><circle cx="97" cy="263" r="7"/><circle cx="152" cy="253" r="7"/><circle cx="194" cy="224" r="7"/><circle cx="245" cy="203" r="7"/><circle cx="293" cy="198" r="7"/><circle cx="324" cy="167" r="7"/><circle cx="372" cy="125" r="7"/><circle cx="426" cy="128" r="7"/><circle cx="470" cy="98" r="7"/><circle cx="512" cy="85" r="7"/></g>
-            <rect x="25" y="19" width="142" height="30" rx="4" fill="#26241f"/><text x="39" y="39" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#f7edda" letter-spacing="2">MODEL / R²</text>
+            <rect width="600" height="360" fill="#2A3A62"/>
+            <g stroke="#88AAFF" opacity=".22" stroke-width="1"><path d="M78 55V315 M150 55V315 M222 55V315 M294 55V315 M366 55V315 M438 55V315 M510 55V315 M60 87H540 M60 144H540 M60 201H540 M60 258H540 M60 315H540"/></g>
+            <path d="M70 292L519 72" fill="none" stroke="#88AAFF" stroke-width="5"/>
+            <g fill="#F8F9FF"><circle cx="97" cy="263" r="7"/><circle cx="152" cy="253" r="7"/><circle cx="194" cy="224" r="7"/><circle cx="245" cy="203" r="7"/><circle cx="293" cy="198" r="7"/><circle cx="324" cy="167" r="7"/><circle cx="372" cy="125" r="7"/><circle cx="426" cy="128" r="7"/><circle cx="470" cy="98" r="7"/><circle cx="512" cy="85" r="7"/></g>
+            <rect x="25" y="19" width="142" height="30" rx="4" fill="#151A34"/><text x="39" y="39" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#F8F9FF" letter-spacing="2">MODEL / R²</text>
           </svg>
           <div class="card-info">
             <div class="card-heading"><h3>Applied ML &amp; Data Projects</h3><span aria-hidden="true">01</span></div>
             <p>A documented sales-regression notebook, with a focus on model selection, R² evaluation and the reasoning behind coding decisions.</p>
             <span class="status">Jupyter / Ironhack / ongoing portfolio</span>
+            <div><a class="project-link" href="https://github.com/chepeda/mini-project" target="_blank" rel="noopener noreferrer" aria-label="View the sales regression mini-project repository on GitHub">View project ↗</a></div>
           </div>
         </article>
         <article class="card">
-          <svg class="card-art" viewBox="0 0 600 360" role="img" aria-label="Mnemo project illustration: the number 02 next to a minimal elephant silhouette" xmlns="http://www.w3.org/2000/svg">
-            <rect width="600" height="360" fill="#343735"/>
-            <text x="30" y="67" font-size="43" font-family="Georgia,'Times New Roman',serif" font-weight="700" letter-spacing=".2" fill="#E8AC4C">Mnemo</text>
-            <text x="29" y="282" font-size="225" font-family="Impact,'Arial Narrow',Arial,sans-serif" font-weight="900" letter-spacing="-8" fill="#F3CF83">02</text>
-            <!-- Single-piece, geometric elephant facing right; no path, dots or decorative marks. -->
-            <path fill="#F3CF83" d="M329 161C329 136 344 122 370 122H465C495 122 513 143 513 171V233C513 250 520 259 536 259H548V280H530C498 280 488 261 488 235V208C488 196 478 188 466 188H447V281H402V234H362V281H323V170C323 166 325 164 329 161Z"/>
-            <circle cx="477" cy="156" r="6" fill="#343735"/>
-            <text x="30" y="331" font-size="13" font-family="Arial,Helvetica,sans-serif" letter-spacing="3" fill="#E8AC4C">LEARNING / MEMORY / ASSOCIATION</text>
+                              <svg class="card-art" viewBox="0 0 600 360" role="img" aria-label="Mnemo project illustration with a minimalist elephant silhouette" xmlns="http://www.w3.org/2000/svg">
+            <rect width="600" height="360" fill="#222E50"/>
+            <text x="30" y="63" font-size="37" font-family="Georgia, 'Times New Roman', serif" font-weight="700" letter-spacing="1" fill="#88AAFF">Mnemo</text>
+            <path fill="#BFCAE6" d="M329 161C329 136 344 122 370 122H465C495 122 513 143 513 171V233C513 250 520 259 536 259H548V280H530C498 280 488 261 488 235V208C488 196 478 188 466 188H447V281H402V234H362V281H329V161Z"/>
+            <circle cx="477" cy="156" r="6" fill="#222E50"/>
+            <text x="30" y="331" font-size="13" font-family="Arial,Helvetica,sans-serif" letter-spacing="3" fill="#88AAFF">LEARNING / MEMORY / ASSOCIATION</text>
           </svg>
           <div class="card-info">
             <div class="card-heading"><h3>Independent App Projects</h3><span aria-hidden="true">02</span></div>
-            <p>Mnemo, a learning-app project inspired by mnemonic methods, including the method of loci and story-based recall.</p>
-            <span class="status">Mnemo / in development</span>
+            <p>Mnemo is a cross-platform mnemonic learning app. Its functional prototype supports personal Symbol Lists, optional AI-generated suggestions and an editable, local Major System.</p>
+            <span class="status">Mnemo / functional prototype v1.0.1</span>
+            <div><a class="project-link" href="#mnemo-project">Explore Mnemo ↗</a> <a class="project-link" style="margin-left:12px" href="https://github.com/chepeda/mnemo/tree/develop" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
           </div>
         </article>
         <article class="card">
           <svg class="card-art" viewBox="0 0 600 360" role="img" aria-label="Abstract artwork evoking a vinyl record, not the official EP cover" xmlns="http://www.w3.org/2000/svg">
-            <rect width="600" height="360" fill="#F3CF83"/>
+            <rect width="600" height="360" fill="#43557C"/>
             <g transform="translate(309 170)">
-              <circle r="191" fill="#262626"/>
-              <circle r="160" fill="none" stroke="#E8AC4C" stroke-opacity=".42" stroke-width="2"/>
-              <circle r="139" fill="none" stroke="#E8AC4C" stroke-opacity=".42" stroke-width="2"/>
-              <circle r="120" fill="none" stroke="#E8AC4C" stroke-opacity=".42" stroke-width="2"/>
-              <circle r="99" fill="none" stroke="#E8AC4C" stroke-opacity=".42" stroke-width="2"/>
-              <circle r="70" fill="#E8AC4C"/>
-              <circle r="16" fill="#252525"/>
+              <circle r="191" fill="#151A34"/>
+              <circle r="160" fill="none" stroke="#88AAFF" stroke-opacity=".76" stroke-width="2"/>
+              <circle r="139" fill="none" stroke="#88AAFF" stroke-opacity=".76" stroke-width="2"/>
+              <circle r="120" fill="none" stroke="#88AAFF" stroke-opacity=".76" stroke-width="2"/>
+              <circle r="99" fill="none" stroke="#88AAFF" stroke-opacity=".76" stroke-width="2"/>
+              <circle r="70" fill="#88AAFF"/>
+              <circle r="16" fill="#151A34"/>
             </g>
-            <rect x="17" y="20" width="128" height="29" rx="4" fill="#fff7e8"/>
-            <text x="30" y="40" font-family="Arial,sans-serif" font-size="14" font-weight="800" fill="#202020" letter-spacing="2">INDIE / EP</text>
+            <rect x="17" y="20" width="128" height="29" rx="4" fill="#F8F9FF"/>
+            <text x="30" y="40" font-family="Arial,sans-serif" font-size="14" font-weight="800" fill="#151A34" letter-spacing="2">INDIE / EP</text>
           </svg>
           <div class="card-info">
             <div class="card-heading"><h3>Creative Work / Music</h3><span aria-hidden="true">03</span></div>
             <p>An original indie-rock mini-EP, independently produced using GarageBand and released on SoundCloud.</p>
             <span class="status">Music production / released</span>
+            <div><a class="project-link" href="https://soundcloud.com/user-561443338/sets/ep" target="_blank" rel="noopener noreferrer" aria-label="Listen to the indie-rock EP on SoundCloud">Listen on SoundCloud ↗</a></div>
           </div>
         </article>
       </div>
@@ -196,7 +226,7 @@
             <h3>Not just a higher R².<br>A defensible result.</h3>
             <p>A Jupyter Notebook exploring a <strong>regression problem using sales data</strong>. The goal is to find a strong R² score while examining how meaningful and reliable the result is.</p>
             <p>Rather than treating a metric as the whole story, the notebook explains <strong>why particular code and machine-learning approaches were chosen</strong>, making the reasoning behind the analysis part of the project.</p>
-            <div class="note">Notebook link and measured results can be added after publication. No performance numbers are claimed here.</div>
+            <div class="note">Project repository: <a class="project-link" href="https://github.com/chepeda/mini-project" target="_blank" rel="noopener noreferrer">Explore the analysis ↗</a><br>Specific notebook results and metrics are not reproduced here.</div>
           </div>
           <div>
             <div class="case-label">What the work emphasizes</div>
@@ -210,7 +240,38 @@
           </div>
         </div>
       </div>
-      <div class="future"><p><strong style="color:#ccc">Next explorations:</strong> additional Kaggle-based studies involving regression and classification. These will be added as they are completed and documented.</p><span>Future work / not yet published</span></div>
+      <div class="future"><p><strong style="color:var(--ink)">Next explorations:</strong> additional Kaggle-based studies involving regression and classification. These will be added as they are completed and documented.</p><span>Future work / not yet published</span></div>
+    </section>
+
+    <section class="case-study" id="mnemo-project" aria-labelledby="mnemo-heading">
+      <div class="section-top">
+        <h2 id="mnemo-heading">Mnemo - Independent app</h2>
+        <span class="section-hint">Learning technology / functional prototype</span>
+      </div>
+      <div class="case-box">
+        <div class="case-grid">
+          <div>
+            <div class="case-label">02 - Mnemo / v1.0.1</div>
+            <h3>Encode. Connect. Recall.</h3>
+            <p><strong>Mnemo is a cross-platform mnemonic learning application</strong> designed to make it easier to turn abstract information into personal mental associations.</p>
+            <p>The current prototype includes editable Symbol Lists, optional AI-assisted mnemonic word suggestions and a locally operated Major System. Users can review, customise and maintain their own associations rather than relying on AI-generated content.</p>
+            <p>My aim is to combine learning research with practical software development, while keeping the learner in control.</p>
+            <div class="note">Research-informed concept. Mnemo's effectiveness as an integrated learning system has not yet been established through controlled empirical evaluation.</div>
+            <a class="project-link" href="https://github.com/chepeda/mnemo/tree/develop" target="_blank" rel="noopener noreferrer">View Mnemo on GitHub ↗</a>
+          </div>
+          <div>
+            <div class="case-label">Project at a glance</div>
+            <ul class="detail-list">
+              <li><strong>Status</strong><span>Functional development prototype, v1.0.1</span></li>
+              <li><strong>Implemented</strong><span>15 predefined Symbol Lists with 647 available learning positions, not 647 completed associations</span></li>
+              <li><strong>AI support</strong><span>Optional mnemonic suggestions with manual editing and user control</span></li>
+              <li><strong>Core system</strong><span>Local Major System with configurable phonetic assignments</span></li>
+              <li><strong>Tech stack</strong><span>React Native, Expo, TypeScript, Node.js, Express and OpenAI API</span></li>
+              <li><strong>Next steps</strong><span>Training and Dreamscapes modes, scientific study design and further testing</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section class="about" id="about" aria-labelledby="about-heading">
@@ -237,7 +298,7 @@
         <div class="contact-rows">
           <a class="contact-row" href="https://github.com/chepeda" target="_blank" rel="noopener noreferrer"><strong>GitHub</strong><span>github.com/chepeda ↗</span></a>
           <div class="contact-row"><strong>Career focus</strong><span>Applied AI / Technical Solutions</span></div>
-          <div class="contact-row"><strong>Music</strong><span>SoundCloud link to be added</span></div>
+          <a class="contact-row" href="https://soundcloud.com/user-561443338/sets/ep" target="_blank" rel="noopener noreferrer" aria-label="Listen to the indie-rock EP on SoundCloud"><strong>Music</strong><span>Listen on SoundCloud ↗</span></a>
         </div>
       </div>
 
