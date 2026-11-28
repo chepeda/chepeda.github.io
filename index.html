@@ -83,9 +83,10 @@
     .detail-list {margin:9px 0 0;padding:0;list-style:none;border-top:1px solid var(--line)}
     .detail-list li {display:grid;grid-template-columns:100px 1fr;gap:15px;border-bottom:1px solid var(--line);padding:14px 0;font-size:11px;line-height:1.65;color:var(--muted)}
     .detail-list strong {font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--ink)}
-    .future {display:flex;justify-content:space-between;gap:20px;align-items:center;padding-top:20px}
-    .future p {margin:0;max-width:680px;font-size:11px;color:var(--muted)}
-    .future span {font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.11em;white-space:nowrap}
+    .ml-next {margin-top:17px;padding:23px 34px;border:1px solid var(--line);border-radius:10px;background:var(--panel);display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .ml-next h3 {margin:7px 0 8px;font-size:20px;line-height:1.2;letter-spacing:-.035em}
+    .ml-next p {max-width:705px;margin:0;font-size:12px;line-height:1.75;color:var(--muted)}
+    .ml-next .status {flex-shrink:0;color:var(--accent);text-align:right}
     .about {display:grid;grid-template-columns:.95fr 1.05fr;gap:42px;align-items:center;padding:0 0 111px}
     .about-image {min-height:410px;height:100%;border-radius:10px;background:var(--panel);overflow:hidden;position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:28px}
     .about-image::before {content:"";position:absolute;width:410px;height:410px;border:1px solid rgba(136,170,255,.32);border-radius:50%;left:32%;top:15%;box-shadow:0 0 0 42px rgba(136,170,255,.12),0 0 0 90px rgba(109,132,186,.12),0 0 0 140px rgba(67,85,124,.16)}
@@ -110,7 +111,7 @@
     .footer-inner {display:flex;justify-content:space-between;gap:20px;align-items:center;padding:24px 0;font-size:10px;letter-spacing:.08em;text-transform:uppercase}
     .footer-links {display:flex;gap:22px}.footer a{text-decoration:none}.footer a:hover{color:var(--ink)}
     @media(max-width:840px){.wrap{width:min(670px,calc(100% - 42px))}.hero{grid-template-columns:1fr;gap:34px;padding:55px 0 88px}.hero h1{font-size:clamp(3.7rem,10vw,6rem)}.hero-visual{max-width:610px}.about,.contact{gap:30px}.case-grid{gap:25px}.about-image{min-height:345px}}
-    @media(max-width:650px){.masthead{min-height:69px}.nav{gap:16px}.nav a{font-size:9px}.hero{padding:48px 0 75px}.hero h1{font-size:clamp(3.4rem,12vw,5rem)}.section-top{align-items:start}.cards{grid-template-columns:1fr;gap:17px}.card-art{aspect-ratio:1.9}.card-info{padding:18px}.card p{font-size:12px}.case-grid{grid-template-columns:1fr;gap:14px}.case-box{padding:25px 22px}.detail-list li{grid-template-columns:95px 1fr}.future{align-items:flex-start;flex-direction:column;gap:8px}.about{grid-template-columns:1fr;padding-bottom:79px}.contact{padding-bottom:79px}.about-image{min-height:330px}.footer-inner{align-items:flex-start;flex-direction:column}.section-top h2,.about h2,.contact h2{font-size:28px}}
+    @media(max-width:650px){.masthead{min-height:69px}.nav{gap:16px}.nav a{font-size:9px}.hero{padding:48px 0 75px}.hero h1{font-size:clamp(3.4rem,12vw,5rem)}.section-top{align-items:start}.cards{grid-template-columns:1fr;gap:17px}.card-art{aspect-ratio:1.9}.card-info{padding:18px}.card p{font-size:12px}.case-grid{grid-template-columns:1fr;gap:14px}.case-box{padding:25px 22px}.detail-list li{grid-template-columns:95px 1fr}.ml-next{align-items:flex-start;flex-direction:column;gap:12px;padding:22px}.ml-next .status{text-align:left}.about{grid-template-columns:1fr;padding-bottom:79px}.contact{padding-bottom:79px}.about-image{min-height:330px}.footer-inner{align-items:flex-start;flex-direction:column}.section-top h2,.about h2,.contact h2{font-size:28px}}
     @media(max-width:650px){.masthead{flex-wrap:wrap;align-items:center;gap:14px;padding-top:20px;padding-bottom:14px}.logo{font-size:13px;letter-spacing:.115em}.nav{width:100%;justify-content:flex-start;gap:12px 20px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
 
@@ -125,7 +126,7 @@
   <header class="wrap masthead">
     <a class="logo" href="#top" aria-label="Andreas Holzner Cepeda, back to top">ANDREAS HOLZNER CEPEDA<span></span></a>
     <nav class="nav" aria-label="Main navigation">
-      <a href="#work">Work</a><a href="#case-study">Case study</a><a href="#about">About</a><a href="#contact">Contact</a><a href="https://github.com/chepeda" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      <a href="#work">Work</a><a href="#case-study">ML projects</a><a href="#mnemo-project">App Project</a><a href="#about">About</a><a href="#contact">Contact</a><a href="https://github.com/chepeda" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
     </nav>
   </header>
   <main id="top" class="wrap">
@@ -172,9 +173,9 @@
           </svg>
           <div class="card-info">
             <div class="card-heading"><h3>Applied ML &amp; Data Projects</h3><span aria-hidden="true">01</span></div>
-            <p>A documented sales-regression notebook, with a focus on model selection, R² evaluation and the reasoning behind coding decisions.</p>
-            <span class="status">Jupyter / Ironhack / ongoing portfolio</span>
-            <div><a class="project-link" href="https://github.com/chepeda/mini-project" target="_blank" rel="noopener noreferrer" aria-label="View the sales regression mini-project repository on GitHub">View project ↗</a></div>
+            <p>A collection of machine-learning projects: a sales-regression mini-project with its README in progress, plus a CNN-based image-classification project currently in development.</p>
+            <span class="status">Regression / CNN image classification</span>
+            <div><a class="project-link" href="#case-study">Explore ML projects ↗</a></div>
           </div>
         </article>
         <article class="card">
@@ -218,15 +219,15 @@
     </section>
 
     <section class="case-study" id="case-study" aria-labelledby="case-heading">
-      <div class="section-top"><h2 id="case-heading">Featured case study</h2><span class="section-hint">Applied machine learning / course project</span></div>
+      <div class="section-top"><h2 id="case-heading">Applied ML projects</h2><span class="section-hint">Project collection / growing</span></div>
       <div class="case-box">
         <div class="case-grid">
           <div>
-            <div class="case-label">01 — Sales data / regression</div>
+            <div class="case-label">01.1 - Sales data / regression</div>
             <h3>Not just a higher R².<br>A defensible result.</h3>
             <p>A Jupyter Notebook exploring a <strong>regression problem using sales data</strong>. The goal is to find a strong R² score while examining how meaningful and reliable the result is.</p>
             <p>Rather than treating a metric as the whole story, the notebook explains <strong>why particular code and machine-learning approaches were chosen</strong>, making the reasoning behind the analysis part of the project.</p>
-            <div class="note">Project repository: <a class="project-link" href="https://github.com/chepeda/mini-project" target="_blank" rel="noopener noreferrer">Explore the analysis ↗</a><br>Specific notebook results and metrics are not reproduced here.</div>
+            <div class="note">The project's README is still being written. Specific notebook results and metrics are not reproduced here.<br><a class="project-link" href="https://github.com/chepeda/mini-project" target="_blank" rel="noopener noreferrer">View regression project on GitHub ↗</a></div>
           </div>
           <div>
             <div class="case-label">What the work emphasizes</div>
@@ -235,12 +236,19 @@
               <li><strong>Tools</strong><span>Jupyter Notebook · machine learning</span></li>
               <li><strong>Method</strong><span>Explained code choices and reasons for selecting ML algorithms</span></li>
               <li><strong>Evaluation</strong><span>R², with attention to the validity of the result</span></li>
-              <li><strong>Status</strong><span>Ironhack mini-project · documentation available to add</span></li>
+              <li><strong>Status</strong><span>Mini-project · README in progress</span></li>
             </ul>
           </div>
         </div>
       </div>
-      <div class="future"><p><strong style="color:var(--ink)">Next explorations:</strong> additional Kaggle-based studies involving regression and classification. These will be added as they are completed and documented.</p><span>Future work / not yet published</span></div>
+      <div class="ml-next" aria-label="Second machine learning project in development">
+        <div>
+          <div class="case-label">01.2 - Image classification / CNN</div>
+          <h3>Learning to classify images.</h3>
+          <p>A second machine-learning project is already in development, focusing on image classification with a convolutional neural network (CNN). The approach, results and repository link will be added once the project is ready to present.</p>
+        </div>
+        <span class="status">Work in progress</span>
+      </div>
     </section>
 
     <section class="case-study" id="mnemo-project" aria-labelledby="mnemo-heading">
